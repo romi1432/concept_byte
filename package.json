@@ -7,16 +7,20 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "lucide-react": "^0.513.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:frontend": "react-scripts start",
+    "start:backend": "cd backend && python3 app.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "install:backend": "cd backend && pip install -r requirements.txt"
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +39,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.0",
+    "install": "^0.13.0",
+    "npm": "^11.4.1",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17"
+  },
+  "proxy": "http://localhost:3001"
 }
